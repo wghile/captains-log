@@ -26,18 +26,19 @@ app.use((req, res, next) => {
     console.log('running for all routes')
     next()
 })
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: false}))  //bpdy-parser package
 app.use(methodOverride('_method'))
 
 //Routes: INDUCES
     //Index
-        // app.get('/', async(req, res) => {
-        //     try{
-
-        //     }catch(error){
-        //         console.error(error)
-        //     }
-        // })
+        app.get('/logs', async(req, res) => {
+            try{
+                const logs = await Log.find()
+                res.render('Index', {logs})
+            }catch(error){
+                console.error(error)
+            }
+        })
 
     //New
         app.get('/logs/new', async(req, res) => {
@@ -67,13 +68,19 @@ app.use(methodOverride('_method'))
         // })
 
     //Create
-        // app.get('/', async(req, res) => {
-        //     try{
-
-        //     }catch(error){
-        //         console.error(error)
-        //     }
-        // })
+        app.post('/logs', async(req, res) => {
+            try{
+                if(req.body.shipIsBroken === 'on'){
+                    req.body.shipIsBroken = true
+                }else{
+                    req.body.shipIsBroken = false
+                }
+                await Log.create(req.body)
+                res.redirect('/logs')
+            }catch(error){
+                console.error(error)
+            }
+        })
 
     //Edit
         // app.get('/', async(req, res) => {
@@ -85,13 +92,14 @@ app.use(methodOverride('_method'))
         // })
 
     //Show
-        // app.get('/', async(req, res) => {
-        //     try{
-
-        //     }catch(error){
-        //         console.error(error)
-        //     }
-        // })
+        app.get('/logs/:id', async(req, res) => {
+            try{
+                const log = await Log.findById(req.params.id)
+                res.render('Show', {log})
+            }catch(error){
+                console.error(error)
+            }
+        })
 
 //Server Status Check
 app.listen(process.env.PORT || 3000, () => {
