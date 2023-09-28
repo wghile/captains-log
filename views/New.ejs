@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧭 Captain's Log</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1>New Page</h1>
+    <form action="/logs" method="POST">
+        Title: <input id='title-input' type="text" name="title"/>
+        Entry: <input id='entry-input' type="textarea" name="entry" />
+        Ship is Broken? <input id='checkbox' type="checkbox" name="shipIsBroken" />
+        <input id='submit-button' type="submit"/>
+    </form>
+</body>
+</html>
