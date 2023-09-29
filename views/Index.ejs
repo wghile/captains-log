@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧭 Captain's Log</title>
+    <title>Log Book</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display:regular);
+        @import url(https://fonts.googleapis.com/css?family=Sedgwick+Ave:regular);
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-color: beige;
+
+            font-family: Sedgwick Ave;
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href='/home'>
+            Return Home
+        </a>
+    </nav>
+    <h1>
+        Logs
+    </h1>
+    <a href="/logs/new">+ New Log</a>
     <ul>
         <% logs.map((log) => { %>
             <li>
@@ -21,6 +43,5 @@
             </form>
         <% }) %>
     </ul>
-    <a href="/logs/new">Create New Log</a>
 </body>
 </html>

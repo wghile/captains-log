@@ -3,33 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧭 Captain's Log</title>
+    <title>Log Book</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Pixelify+Sans:regular,500,600,700);
+    
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            /* background: linear-gradient(to top, #09203f 0%, #537895 100%); */
+            background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
+            background-repeat: no-repeat;
+            height: 100vh;
+            font-family: Pixelify Sans;
+            line-height: 0.5in;
+            letter-spacing: 0.05in;
+            font-size: 20px;
+            padding: 10px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+        nav{
+            padding-left: 20px;
+        }
+            a{
+                text-decoration: none;
+                color: white;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+        main{
+            align-self: center;
+            width: 80vw;
+            display: grid;
+            grid-template-rows: 80px 50px 1fr;
+            gap: 10px;
+        }
+            #title{
+                border-bottom: 2px aliceblue dashed;
+                margin-bottom: 20px;
+                
+                display: flex;
+                justify-content: space-between;
+            }
+            #entry{
+                color: aliceblue;
+                padding: 10px 50px;
+            }
+    </style>
 </head>
 <body>
-    <h1>
-        <%= log.title %>
-    </h1>
-    <p>
-        Log Date: <%= `${log.createdAt.getMonth() + 1}-${log.createdAt.getDate()}-${log.createdAt.getFullYear()}` %>
-    </p>
-    <p>
-        Entry: <%= log.entry %>
-    </p>
-    <div>
-        <!-- Ship Status:  -->
-        Ship is Broken?
-        <span>
+    <nav>
+        <a href="/logs">
+            Return to All Logs
+        </a>
+    </nav>
+    <main>
+        <div id = 'title'>
+            Title:
+            <%= log.title %>
+            <p>
+                Log Date: <%= `${log.createdAt.getMonth() + 1}-${log.createdAt.getDate()}-${log.createdAt.getFullYear()}` %>
+            </p>
+        </div>
+        <div id="status">
+            Ship Status: 
+            <!-- Ship is Broken? -->
             <% if(log.shipIsBroken == false){ %>
-               <!-- <h1>Good Condition</h1> -->
-                <input type="checkbox" name="shipIsBroken" />
+                <span style="color: darkgreen;">Good Condition</span>
+                <!-- <input type="checkbox" name="shipIsBroken" /> -->
             <% }else{ %>
-               <!-- <h1>Needs Repairs</h1> -->
-                <input type="checkbox" name="shipIsBroken" checked />
+                <span style="color: darkred;">Needs Repairs</span>
+                <!-- <input type="checkbox" name="shipIsBroken" checked /> -->
             <% } %>
-        </span>
-    </div>
-    <a href="/logs">
-        Return
-    </a>
+        </div>
+        <div>
+            Entry: 
+            <br />
+            <p id="entry">
+                <%= log.entry %>
+            </p>
+        </div>
+    </main>
 </body>
 </html>
