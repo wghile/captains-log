@@ -6,6 +6,18 @@
     <title>🧭 Captain's Log</title>
 </head>
 <body>
-    
+    <form action= <%= `/logs/${log._id}?_method=PUT` %> method='POST'>
+        Title: <input type='text' name='title' value= <%= log.title %> />
+        Log Date: <input type='text' name='timestamps' value= <%= `${log.createdAt.getMonth() + 1}-${log.createdAt.getDate()}-${log.createdAt.getFullYear()}` %> />
+        Entry: <input type='text' name='entry' value= <%= log.entry %> />
+        Ship is Broken:
+        <% if(log.shipIsBroken == true){ %>
+            <input type="checkbox" name="shipIsBroken" checked />
+        <% }else{ %> 
+            <input type="checkbox" name="shipIsBroken" />
+        <% } %>
+        <br/>
+        <input type="submit" value="Submit Changes"/>
+    </form>
 </body>
 </html>

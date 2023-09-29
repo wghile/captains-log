@@ -50,22 +50,30 @@ app.use(methodOverride('_method'))
         })
 
     //Delete
-        // app.get('/', async(req, res) => {
-        //     try{
-
-        //     }catch(error){
-        //         console.error(error)
-        //     }
-        // })
+        app.delete('/logs/:id', async(req, res) => {
+            try{
+                await Log.findByIdAndRemove(req.params.id)
+                res.redirect('/logs')
+            }catch(error){
+                console.error(error)
+            }
+        })
 
     //Update
-        // app.get('/', async(req, res) => {
-        //     try{
-
-        //     }catch(error){
-        //         console.error(error)
-        //     }
-        // })
+        app.put('/logs/:id', async(req, res) => {
+            try{
+                if(req.body.shipIsBroken === 'on'){
+                    req.body.shipIsBroken = true
+                }else{
+                    req.body.shipIsBroken = false
+                }
+                console.log(req.body)
+            }catch(error){
+                console.error(error)
+            }
+            await Log.findByIdAndUpdate(req.params.id, req.body)
+            res.redirect(`/logs/${req.params.id}`)
+        })
 
     //Create
         app.post('/logs', async(req, res) => {
@@ -83,13 +91,14 @@ app.use(methodOverride('_method'))
         })
 
     //Edit
-        // app.get('/', async(req, res) => {
-        //     try{
-
-        //     }catch(error){
-        //         console.error(error)
-        //     }
-        // })
+        app.get('/logs/:id/edit', async(req, res) => {
+            try{
+                const log = await Log.findById(req.params.id)
+                res.render('Edit', {log})
+            }catch(error){
+                console.error(error)
+            }
+        })
 
     //Show
         app.get('/logs/:id', async(req, res) => {

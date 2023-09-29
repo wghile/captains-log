@@ -13,6 +13,12 @@
                     <%= log.title %>
                 </a>
             </li>
+            <a href= <%= `/logs/${log._id}/edit` %>>
+                Edit Log
+            </a>
+            <form action= <%= `/logs/${log._id}/?_method=DELETE`%> method='POST'>
+                <input type="submit" value="Delete"/>
+            </form>
         <% }) %>
     </ul>
     <a href="/logs/new">Create New Log</a>

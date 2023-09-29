@@ -10,18 +10,21 @@
         <%= log.title %>
     </h1>
     <p>
-        Log Date: <%= log.createdAt.getMonth() + 1 %> - <%= log.createdAt.getDate() %> - <%= log.createdAt.getFullYear()%>
+        Log Date: <%= `${log.createdAt.getMonth() + 1}-${log.createdAt.getDate()}-${log.createdAt.getFullYear()}` %>
     </p>
     <p>
         Entry: <%= log.entry %>
     </p>
     <div>
-        Ship Status: 
+        <!-- Ship Status:  -->
+        Ship is Broken?
         <span>
             <% if(log.shipIsBroken == false){ %>
-               <%= `Good Condition` %>
+               <!-- <h1>Good Condition</h1> -->
+                <input type="checkbox" name="shipIsBroken" />
             <% }else{ %>
-               <%= `Needs Repairs` %>
+               <!-- <h1>Needs Repairs</h1> -->
+                <input type="checkbox" name="shipIsBroken" checked />
             <% } %>
         </span>
     </div>
