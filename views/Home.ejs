@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧭 Captain's Log</title>
+    <style>
+        /* @import url(https://fonts.googleapis.com/css?family=Tilt+Prism:regular);
+        @import url(https://fonts.googleapis.com/css?family=Mooli:regular);
+        @import url(https://fonts.googleapis.com/css?family=Dela+Gothic+One:regular); */
+        @import url(https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display:regular);
+
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-image: url('/images/oldpaperbackground.jpeg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            width: 100vw;
+            font-family: Sedgwick Ave Display;
+
+            display: grid;
+            grid-template-rows: 100px 1fr 150px;
+            justify-items: center;
+            align-items: center;
+            gap: 40px;
+        }
+        h1{
+            grid-row: 1/2;
+            letter-spacing: 0.02in;
+            font-size: 50px;
+            margin-top: 40px
+        }
+        main{
+            grid-row: 2/3;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+            #ship{
+                width: 80vw;
+                border-radius: 10px;
+                border: 5px burlywood inset;
+            }
+            a{
+                text-decoration: none;
+                color: brown;
+                font-size: 40px;
+            }
+        footer{
+            grid-row: 3/4;
+        }
+            #compass{
+                width: 100px;
+            }
+    </style>
+</head>
+<body>
+    <h1>
+        Going Merry Log Book
+    </h1>
+    <main>
+        <img id = 'ship' src = '/images/goingmerry.jpeg' alt = 'Going Merry Ship' />
+        <br />
+        <br />
+        <a href = '/logs'>
+            📃 View Logs
+        </a>
+    </main>
+    <footer>
+        <img id = 'compass' src = '/images/compass.png' alt = 'Compass' />
+    </footer>
+</body>
+</html>
