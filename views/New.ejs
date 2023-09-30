@@ -3,20 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧭 Captain's Log</title>
+    <title>Log Book</title>
     <style>
+        @import url(https://fonts.googleapis.com/css?family=Courgette:regular);
         *{
             margin: 0px;
             padding: 0px;
         }
+        body{
+            background: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+            font-family: Courgette;
+        }
+        form{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            padding-left: 100px;
+            font-size: 20px;
+        }
+            input{
+                font-family: Courgette;
+                margin-top: 20px;
+            }
+            #title-input{
+                width: 500px;
+                height: 20px;
+            }
+            #entry-input{
+                margin-top: 20px;
+                width: 500px;
+                height: 200px;
+            }
+            #checkbox{
+                margin-left: 20px;
+            }
+            #submit-button{
+                width: 200px;
+                font-size: 18px;
+                margin-left: 10vw;
+                padding: 10px 40px;
+                border-radius: 5px;
+                background-color: lightgray;
+            }
+            #submit-button:hover{
+                cursor: pointer;
+                background-color: antiquewhite;
+            }
     </style>
 </head>
 <body>
-    <h1>New Page</h1>
     <form action="/logs" method="POST">
-        Title: <input id='title-input' type="text" name="title"/>
-        Entry: <input id='entry-input' type="textarea" name="entry" />
-        Ship is Broken? <input id='checkbox' type="checkbox" name="shipIsBroken" />
+        <div>
+            Title
+            <br />
+            <input id='title-input' type="text" name="title" />
+        </div>
+        <div>
+            Entry 
+            <br />
+            <textarea id='entry-input' name="entry"></textarea>
+        </div>
+        <div>
+            Ship is Broken? <input id='checkbox' type="checkbox" name="shipIsBroken" />
+        </div>
         <input id='submit-button' type="submit"/>
     </form>
 </body>

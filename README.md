@@ -20,3 +20,7 @@ Built with: Express, NodeJS, Mongoose, MongoDB, and JavaScript
 - `$ sudo npm i -g nodemon`
 
 4. cd into folder and run nodemon to start server. Type in `localhost:3000` in browser
+
+## Resources
+
+- https://stackoverflow.com/questions/48435948/nodejs-express-html-hidden-input-value-showing-only-first-word

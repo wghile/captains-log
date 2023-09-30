@@ -12,10 +12,9 @@
             padding: 0px;
         }
         body{
-            /* background: linear-gradient(to top, #09203f 0%, #537895 100%); */
             background: linear-gradient(109.6deg, rgb(61, 121, 176) 11.3%, rgb(35, 66, 164) 91.1%);
             background-repeat: no-repeat;
-            height: 100vh;
+            height: 98vh;
             font-family: Pixelify Sans;
             line-height: 0.5in;
             letter-spacing: 0.05in;
@@ -24,7 +23,7 @@
 
             display: flex;
             flex-direction: column;
-            gap: 50px;
+            gap: 25px;
         }
         nav{
             padding-left: 20px;
@@ -39,9 +38,7 @@
         main{
             align-self: center;
             width: 80vw;
-            display: grid;
-            grid-template-rows: 80px 50px 1fr;
-            gap: 10px;
+            line-height: 0.6in;
         }
             #title{
                 border-bottom: 2px aliceblue dashed;
@@ -52,7 +49,9 @@
             }
             #entry{
                 color: aliceblue;
-                padding: 10px 50px;
+                height: 60vh;
+                padding: 0px 50px;
+                overflow-y: scroll;
             }
     </style>
 </head>
@@ -72,13 +71,10 @@
         </div>
         <div id="status">
             Ship Status: 
-            <!-- Ship is Broken? -->
             <% if(log.shipIsBroken == false){ %>
                 <span style="color: darkgreen;">Good Condition</span>
-                <!-- <input type="checkbox" name="shipIsBroken" /> -->
             <% }else{ %>
                 <span style="color: darkred;">Needs Repairs</span>
-                <!-- <input type="checkbox" name="shipIsBroken" checked /> -->
             <% } %>
         </div>
         <div>
@@ -91,3 +87,4 @@
     </main>
 </body>
 </html>
+<!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur facere voluptas quidem ratione autem! Debitis nisi vel ratione cum porro? Saepe error ipsa esse ipsum repellendus eaque animi obcaecati illo, ut quas rerum provident, impedit voluptate facilis minus porro sequi. -->
