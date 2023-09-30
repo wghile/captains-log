@@ -4,7 +4,7 @@ const Log = require('../models/log')
 
 //Routes: INDUCES
     //Home      
-        router.get('/home', async(req, res) => {
+        router.get('/', async(req, res) => {
             try{
                 res.render('Home')
             }catch(error){

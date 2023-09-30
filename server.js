@@ -29,7 +29,7 @@ app.use(express.static('public'))
 
 //Setting Controller
 const logController = require('./controllers/log')
-app.use('/', logController)
+app.use('/home', logController)
 
 //Server Status Check
 app.listen(process.env.PORT || 3000, () => {
