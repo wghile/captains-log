@@ -5,43 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log Book</title>
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display:regular);
         @import url(https://fonts.googleapis.com/css?family=Sedgwick+Ave:regular);
         *{
             margin: 0px;
             padding: 0px;
         }
         body{
-            background-color: beige;
-
+            background-image: url('/images/atsea.jpeg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height: 100vh;
             font-family: Sedgwick Ave;
+
+            display: grid;
+            justify-content: center;
+            align-items: center;
         }
+            div{
+                background-color: rgba(173, 216, 230, 0.676);
+                padding: 30px 20px;
+                width: 50vw;
+                height: 90vh;
+                border-radius: 10px;
+            }
+                h1{
+                    text-align: center;
+                    font-size: 40px;
+                    color: black;
+                    letter-spacing: 0.1in;
+                }
+                #new{
+                    margin-left: 38vw;
+                    color: darkmagenta;
+                    font-size: 20px;
+                    text-decoration: none;
+                }
+            ul{
+                list-style: none;
+                height: 75vh;
+                margin-top: 20px;
+                line-height: 0.8in;
+                padding: 10px 0px;
+
+                overflow: scroll;
+            }
+                li{
+                    display: grid;
+                    grid-template-columns: 3fr 1fr 1fr;
+                    justify-content: left;
+                    padding-left: 40px;
+                    letter-spacing: 0.025in;
+                }
+                    #title, #edit{
+                        text-decoration: none;
+                    }
+                    #title:hover, #edit-text:hover{
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                    #title{
+                        grid-column: 1/2;
+                        width: 350px;
+                        overflow-x: scroll;
+                        font-size: 20px;
+                        color: rgb(34, 79, 95);
+                    }
+                    #edit{
+                        grid-column: 2/3;
+                        color: darkblue;
+                    }
+                    form{
+                        grid-column: 3/4;
+                    }
+                        #delete{
+                            font-family: Sedgwick Ave;
+                            font-size: 15px;
+                            border-radius: 10px; 
+                            padding: 5px 10px;
+                            background-color: aliceblue;
+                            border: 2px darkred inset;
+                        }
+                        #delete:hover{
+                            cursor: pointer;
+                        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href='/home'>
-            Return Home
+    <div>
+        <a id='new' href="/logs/new">
+            <span style="font-size: 25px;">+</span> New Log
         </a>
-    </nav>
-    <h1>
-        Logs
-    </h1>
-    <a href="/logs/new">+ New Log</a>
-    <ul>
-        <% logs.map((log) => { %>
-            <li>
-                <a href= <%= `/logs/${log._id}` %>>
-                    <%= log.title %>
-                </a>
-            </li>
-            <a href= <%= `/logs/${log._id}/edit` %>>
-                Edit Log
-            </a>
-            <form action= <%= `/logs/${log._id}/?_method=DELETE`%> method='POST'>
-                <input type="submit" value="Delete"/>
-            </form>
-        <% }) %>
-    </ul>
+        <h1>
+            LOGS
+        </h1>
+        <ul>
+            <% logs.map((log) => { %>
+                <li>
+                    <a id='title' href= <%= `/logs/${log._id}` %>>
+                        <%= log.title %>
+                    </a>
+                    <a id='edit' href= <%= `/logs/${log._id}/edit` %>>
+                        🖋️ <span id="edit-text">EDIT</span>
+                    </a>
+                    <form action= <%= `/logs/${log._id}/?_method=DELETE`%> method='POST'>
+                        <input id = 'delete' type="submit" value=" ❌ DELETE"/>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
 </body>
 </html>
