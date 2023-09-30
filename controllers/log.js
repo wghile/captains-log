@@ -4,7 +4,7 @@ const Log = require('../models/log')
 
 //Routes: INDUCES
     //Home      
-        router.get('/home', async(req, res) => {
+        router.get('/', async(req, res) => {
             try{
                 res.render('Home')
             }catch(error){
@@ -13,7 +13,7 @@ const Log = require('../models/log')
         })
 
     //Index     
-        router.get('/home/logs', async(req, res) => {
+        router.get('/logs', async(req, res) => {
             try{
                 const logs = await Log.find()
                 res.render('Index', {logs})
@@ -23,7 +23,7 @@ const Log = require('../models/log')
         })
 
     //New
-        router.get('/home/logs/new', async(req, res) => {
+        router.get('/logs/new', async(req, res) => {
             try{
                 res.render('New')
             }catch(error){
@@ -32,7 +32,7 @@ const Log = require('../models/log')
         })
 
     //Delete
-        router.delete('/home/logs/:id', async(req, res) => {
+        router.delete('/logs/:id', async(req, res) => {
             try{
                 await Log.findByIdAndRemove(req.params.id)
                 res.redirect('/logs')
@@ -42,7 +42,7 @@ const Log = require('../models/log')
         })
 
     //Update
-        router.put('/home/logs/:id', async(req, res) => {
+        router.put('/logs/:id', async(req, res) => {
             try{
                 if(req.body.shipIsBroken === 'on'){
                     req.body.shipIsBroken = true
@@ -58,7 +58,7 @@ const Log = require('../models/log')
         })
 
     //Create
-        router.post('/home/logs', async(req, res) => {
+        router.post('/logs', async(req, res) => {
             try{
                 if(req.body.shipIsBroken === 'on'){
                     req.body.shipIsBroken = true
@@ -73,7 +73,7 @@ const Log = require('../models/log')
         })
 
     //Edit
-        router.get('/home/logs/:id/edit', async(req, res) => {
+        router.get('/logs/:id/edit', async(req, res) => {
             try{
                 const log = await Log.findById(req.params.id)
                 res.render('Edit', {log})
@@ -83,7 +83,7 @@ const Log = require('../models/log')
         })
 
     //Show
-        router.get('/home/logs/:id', async(req, res) => {
+        router.get('/logs/:id', async(req, res) => {
             try{
                 const log = await Log.findById(req.params.id)
                 res.render('Show', {log})
